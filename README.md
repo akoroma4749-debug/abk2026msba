@@ -1,42 +1,51 @@
-# 👋 Hi, I'm Abdul Koroma
+# NYU MSBA Capstone: Drift Detection & Strategic Insights
 
-Welcome to my GitHub. I'm a strategic data and analytics leader currently pursuing my MS in Business Analytics at NYU Stern, with a professional background in marketing analytics, customer success, and product strategy.
+This repository contains the technical implementation of our capstone project for the NYU MS in Business Analytics program. The project explores how concept drift modeling and anomaly detection can be used to identify hidden risks and blind spots in real-world decision-making systems — particularly in scenarios like Lending Club’s business trajectory.
 
-My work spans applied machine learning, AI validation, GTM performance strategy, and customer-centric decision science. I've built models and dashboards that drive revenue outcomes, power strategic planning, and scale operational insight across enterprise, public sector, and startup environments.
+## 🔍 Project Overview
 
-This space is a curated portfolio of projects that reflect how I think — and how I solve problems.
+- **Goal:** To build and evaluate machine learning models that detect drift and structural shifts in data and decision systems
+- **Case Focus:** A historical Lending Club scenario, with forward-looking drift modeling techniques applied to simulate early warning signals
+- **Value Proposition:** Shows how AI/ML can complement strategy by surfacing anomalies *before* key outcomes deteriorate
+
+## 📊 Modeling Techniques
+
+- Deep autoencoders for unsupervised drift detection
+- Counterfactual simulations to estimate scenario variance
+- Macroeconomic overlays for external signal integration
+- Time-based visualizations of drift behavior and impacts
+
+## 👥 Team Contributions
+
+| Name                | Role(s)                                                                 |
+|---------------------|--------------------------------------------------------------------------|
+| **Kevin Cardoso**   | Lead Strategist, Lead Modeler (Autoencoder, drift logic)                |
+| **Abdul Koroma**    | Data Architecture, Pipeline Optimization, GitHub Structuring             |
+| **Alexandra Nieves**| Exploratory Data Analysis, BI Visualization                             |
+| **Marissa Giron**   | Business Context Framing, Data Cleaning, BI Support                     |
+| **Antoni Jarecki**  | Counterfactual Scenario Modeling                                         |
+| **Ellen Huang**     | Macroeconomic Overlay Construction                                      |
+
+🧠 Our full contributions breakdown can be found in [`/team/team_contributions.md`](team/team_contributions.md)
+
+## 🛠️ Tech Stack
+
+- Python (scikit-learn, pandas, PyTorch/Keras)
+- Jupyter Notebooks
+- R (for macroeconomic modeling)
+- GitHub & VS Code
+- Tableau (for presentation overlay)
+
+## 📂 Folder Guide
+
+- `notebooks/`: ML experiments & drift modeling notebooks
+- `data/`: Preprocessed datasets and data documentation
+- `methodology/`: Write-ups of model logic and comparisons
+- `team/`: Member roles and capstone structure
+- `presentation/`: Final deck used for team presentation
 
 ---
 
-## 🔍 Core Themes Across My Work
+## 📬 Contact
 
-- **GTM & Customer Strategy**: Optimizing CAC, LTV, and churn through data-driven experiments and GTM dashboards.
-- **AI/ML Applications**: Modeling data drift, validation pipelines, and risk detection in high-sensitivity contexts.
-- **Marketing & Channel Analytics**: Building Marketing Mix Models (MMM), multi-touch attribution, and revenue diagnostics.
-- **Smart City & Public Sector Modeling**: Open data analysis using network theory, forecasting, and clustering.
-
----
-
-## 📁 Featured Repositories
-
-### 🚀 [`ai-drift-capstone`](link-to-repo)
-NYU Capstone project exploring model drift using deep learning and autoencoders. Applied to LendingClub loan risk and AI validation use cases.
-
-### 📊 [`marketing-mix-model`](link-to-repo)
-A media optimization and revenue impact model built with Python, R, and Excel. Includes campaign attribution and Power BI dashboard mockups.
-
-### 🧠 [`gtm-strategy-dash`](link-to-repo)
-Conceptual dashboard + Python/R logic showcasing how I’d operationalize GTM performance, CS health scores, and customer intelligence for an AI SaaS platform.
-
-### 🌐 [`nyu-smart-city`](link-to-repo)
-Public sector analytics on NYC open data: clustering, regression, network centrality, and decision-making under constraint.
-
----
-
-## 🔗 Links
-
-- 💼 [LinkedIn Profile](https://www.linkedin.com/in/abdulkoroma)
-- 📘 [NYU MSBA Program](https://www.stern.nyu.edu/programs-admissions/ms-business-analytics)
-- 📫 [Contact Me](mailto:your-email@example.com)
-
-Thanks for stopping by.
+For more info or collaboration inquiries, contact any team member or reach out to Abdul Koroma via [LinkedIn] (www.linkedin.com/in/abdul-koroma-61019397 ) or GitHub.
