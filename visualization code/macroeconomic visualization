@@ -1,0 +1,70 @@
+# ==========================================
+# Macroeconomic Overlay Visualization
+# AI Drift Detection | NYU MSBA Capstone
+# ==========================================
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# --- 1. Create synthetic data for demo ---
+np.random.seed(42)
+months = pd.date_range(start="2015-01-01", periods=36, freq="M")
+
+# Simulated drift magnitude (0–0.6 scale)
+drift_index = np.abs(np.sin(np.linspace(0, 4*np.pi, len(months)))) * 0.4 \
+              + np.random.normal(0, 0.05, len(months))
+drift_index = np.clip(drift_index, 0, 0.6)
+
+# Simulated macro indicators
+interest_rate_spread = 2 + np.cos(np.linspace(0, 3*np.pi, len(months))) * 0.5 + np.random.normal(0, 0.05, len(months))
+unemployment_rate = 5 - np.sin(np.linspace(0, 3*np.pi, len(months))) * 0.4 + np.random.normal(0, 0.1, len(months))
+
+df_macro = pd.DataFrame({
+    "Month": months,
+    "Drift_Magnitude": drift_index,
+    "Interest_Rate_Spread": interest_rate_spread,
+    "Unemployment_Rate": unemployment_rate
+})
+
+# --- 2. Set aesthetics ---
+sns.set_theme(style="whitegrid", font="DejaVu Sans")
+plt.figure(figsize=(12, 6))
+
+# --- 3. Plot drift magnitude (primary y-axis) ---
+ax = sns.lineplot(
+    data=df_macro, x="Month", y="Drift_Magnitude",
+    color="steelblue", linewidth=2.5, label="Drift Magnitude"
+)
+
+# --- 4. Create secondary y-axis for macroeconomic indicators ---
+ax2 = ax.twinx()
+sns.lineplot(
+    data=df_macro, x="Month", y="Interest_Rate_Spread",
+    ax=ax2, color="gray", linestyle="--", linewidth=2, label="Interest Rate Spread"
+)
+sns.lineplot(
+    data=df_macro, x="Month", y="Unemployment_Rate",
+    ax=ax2, color="lightcoral", linestyle=":", linewidth=2, label="Unemployment Rate"
+)
+
+# --- 5. Titles and labels ---
+plt.title("Drift Magnitude vs Macroeconomic Indicators",
+          fontsize=16, weight="bold", pad=16)
+plt.suptitle("Comparing drift intensity with interest rate spread and unemployment rate trends.",
+             fontsize=10, style="italic", y=0.94, color="#555555")
+
+ax.set_xlabel("Month", fontsize=11, labelpad=8)
+ax.set_ylabel("Drift Magnitude Index", fontsize=11, labelpad=8)
+ax2.set_ylabel("Macroeconomic Indicators", fontsize=11, labelpad=8, color="gray")
+
+# --- 6. Formatting for clarity ---
+ax.legend(frameon=False, fontsize=10, loc="upper left")
+ax2.legend(frameon=False, fontsize=10, loc="upper right")
+sns.despine()
+plt.tight_layout(rect=[0, 0, 1, 0.97])
+
+# --- 7. Save image ---
+plt.savefig("images/macro_overlay.png", dpi=180, bbox_inches="tight")
+plt.show()
