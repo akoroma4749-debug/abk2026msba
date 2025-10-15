@@ -1,0 +1,37 @@
+# ==========================================
+# AI Drift Detection – Visualization Template
+# ==========================================
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# --- 1. Create synthetic data for demo ---
+np.random.seed(42)
+months = pd.date_range(start="2015-01-01", periods=24, freq="M")
+features = ['Loan_Amount', 'Interest_Rate', 'Income', 'Credit_Score', 'DTI', 'Employment_Length']
+
+# Simulated drift intensity (KS-statistic values 0–1)
+data = np.abs(np.random.randn(len(features), len(months))) / 3
+data[data > 1] = 1  # cap at 1
+
+df_drift = pd.DataFrame(data, index=features, columns=months.strftime('%b-%Y'))
+
+# --- 2. Configure plot aesthetics ---
+sns.set_theme(style="whitegrid", font="DejaVu Sans")
+plt.figure(figsize=(12, 6))
+ax = sns.heatmap(df_drift, cmap="coolwarm", cbar_kws={'label': 'Drift Magnitude (KS Statistic)'})
+
+# --- 3. Add titles and labels ---
+plt.title("Monthly Drift Intensity by Feature (2015–2016)",
+          fontsize=16, weight="bold", pad=16)
+plt.suptitle("KS-statistic values showing magnitude of structural change across borrower and loan attributes.",
+             fontsize=10, style="italic", y=0.94, color="#555555")
+plt.xlabel("Month", fontsize=11, labelpad=8)
+plt.ylabel("Feature", fontsize=11, labelpad=8)
+
+# --- 4. Adjust layout & save image ---
+plt.tight_layout(rect=[0, 0, 1, 0.97])  # ensures titles fit
+plt.savefig("images/drift_heatmap.png", dpi=180, bbox_inches="tight")
+plt.show()
