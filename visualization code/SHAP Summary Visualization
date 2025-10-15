@@ -1,0 +1,47 @@
+# ==========================================
+# Feature Drift (SHAP Summary) Visualization
+# AI Drift Detection | NYU MSBA Capstone
+# ==========================================
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# --- 1. Create synthetic SHAP-style feature drift data ---
+np.random.seed(42)
+features = [
+    "Income_Ratio", "Loan_Amount", "Credit_Score", "DTI",
+    "Employment_Length", "Loan_Purpose", "State", "Annual_Income",
+    "Open_Accounts", "Revolving_Balance"
+]
+shap_values = np.abs(np.random.normal(0.25, 0.07, len(features)))
+shap_values = np.clip(shap_values, 0, 0.5)
+df_shap = pd.DataFrame({"Feature": features, "Drift_Impact": shap_values})
+df_shap = df_shap.sort_values("Drift_Impact", ascending=True)
+
+# --- 2. Configure aesthetics ---
+sns.set_theme(style="whitegrid", font="DejaVu Sans")
+plt.figure(figsize=(10, 6))
+
+# --- 3. Horizontal barplot ---
+ax = sns.barplot(
+    data=df_shap,
+    x="Drift_Impact", y="Feature",
+    palette="crest"
+)
+
+# --- 4. Titles and labels ---
+plt.title("Top Features Driving Model Drift", fontsize=16, weight="bold", pad=16)
+plt.suptitle("SHAP summary of variables contributing most to detected distributional shift.",
+             fontsize=10, style="italic", y=0.94, color="#555555")
+plt.xlabel("Mean Absolute SHAP Value (Feature Drift Impact)", fontsize=11, labelpad=8)
+plt.ylabel("Feature", fontsize=11, labelpad=8)
+
+# --- 5. Axis and layout cleanup ---
+sns.despine(left=True, bottom=True)
+plt.tight_layout(rect=[0, 0, 1, 0.97])
+
+# --- 6. Save image ---
+plt.savefig("images/feature_drift.png", dpi=180, bbox_inches="tight")
+plt.show()
