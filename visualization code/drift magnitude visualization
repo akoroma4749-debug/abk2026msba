@@ -1,0 +1,50 @@
+# ==========================================
+# Drift Magnitude Over Time Visualization
+# AI Drift Detection | NYU MSBA Capstone
+# ==========================================
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# --- 1. Create synthetic drift magnitude data ---
+np.random.seed(42)
+months = pd.date_range(start="2015-01-01", periods=36, freq="M")
+drift_index = np.abs(np.sin(np.linspace(0, 4 * np.pi, len(months)))) * 0.4 \
+               + np.random.normal(0, 0.05, len(months))
+drift_index = np.clip(drift_index, 0, 0.6)
+
+df_drift = pd.DataFrame({"Month": months, "Drift_Magnitude": drift_index})
+
+# --- 2. Set plot aesthetics ---
+sns.set_theme(style="whitegrid", font="DejaVu Sans")
+plt.figure(figsize=(12, 6))
+
+# --- 3. Plot drift magnitude trend ---
+sns.lineplot(
+    data=df_drift, x="Month", y="Drift_Magnitude",
+    color="steelblue", linewidth=2.5
+)
+
+# Highlight a key “early-warning” zone
+plt.axvspan(pd.Timestamp("2016-07-01"), pd.Timestamp("2016-10-01"),
+            color="lightcoral", alpha=0.2, label="Detected Drift Period")
+
+# --- 4. Add titles and labels ---
+plt.title("Drift Magnitude Index — Early Warning Pattern",
+          fontsize=16, weight="bold", pad=16)
+plt.suptitle("Overall drift magnitude aggregated monthly; early signals precede performance decline.",
+             fontsize=10, style="italic", y=0.94, color="#555555")
+
+plt.xlabel("Month", fontsize=11, labelpad=8)
+plt.ylabel("Drift Magnitude Index", fontsize=11, labelpad=8)
+
+# --- 5. Final formatting ---
+sns.despine()
+plt.legend(frameon=False, fontsize=10, loc="upper right")
+plt.tight_layout(rect=[0, 0, 1, 0.97])
+
+# --- 6. Save image ---
+plt.savefig("images/drift_timeseries.png", dpi=180, bbox_inches="tight")
+plt.show()
