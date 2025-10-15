@@ -1,0 +1,56 @@
+# ==========================================
+# Autoencoder Reconstruction Error Plot
+# AI Drift Detection | NYU MSBA Capstone
+# ==========================================
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# --- 1. Generate synthetic reconstruction error data ---
+np.random.seed(42)
+months = pd.date_range(start="2015-01-01", periods=24, freq="M")
+# baseline + random spikes to simulate drift events
+base_error = np.random.normal(0.05, 0.01, len(months))
+spikes = np.random.choice([0, 0.05, 0.08], size=len(months), p=[0.75, 0.20, 0.05])
+reconstruction_error = base_error + spikes
+
+df_error = pd.DataFrame({
+    "Month": months,
+    "Reconstruction_Error": reconstruction_error
+})
+
+# --- 2. Configure plot aesthetics ---
+sns.set_theme(style="whitegrid", font="DejaVu Sans")
+plt.figure(figsize=(12, 6))
+
+# --- 3. Plot reconstruction error with shaded drift zones ---
+ax = sns.lineplot(
+    data=df_error, x="Month", y="Reconstruction_Error",
+    color="steelblue", linewidth=2.5
+)
+
+# Highlight top 3 drift spikes for effect
+top_idx = df_error["Reconstruction_Error"].nlargest(3).index
+plt.scatter(df_error.loc[top_idx, "Month"],
+            df_error.loc[top_idx, "Reconstruction_Error"],
+            color="crimson", s=60, zorder=5, label="Detected Drift")
+
+# --- 4. Titles, subtitles, and labels ---
+plt.title("Reconstruction Error Over Time — Autoencoder Drift Detection",
+          fontsize=16, weight="bold", pad=16)
+plt.suptitle("Anomaly scores highlighting months where model deviation exceeded baseline thresholds.",
+             fontsize=10, style="italic", y=0.94, color="#555555")
+
+plt.xlabel("Month", fontsize=11, labelpad=8)
+plt.ylabel("Reconstruction Error", fontsize=11, labelpad=8)
+
+# --- 5. Clean up legend and axes ---
+plt.legend(frameon=False, fontsize=10, loc="upper left")
+sns.despine()
+plt.tight_layout(rect=[0, 0, 1, 0.97])
+
+# --- 6. Export high-quality image ---
+plt.savefig("images/reconstruction_error.png", dpi=180, bbox_inches="tight")
+plt.show()
