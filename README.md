@@ -67,7 +67,7 @@ This capstone project was completed as part of the **NYU Stern MS in Business An
 | Repository | Description |
 |-------------|-------------|
 | [📈 Marketing Mix Model](https://github.com/akoroma4749-debug/Marketing-Mix-Model_Synthetic) | Synthetic MMM demonstrating ROI analytics and GTM strategy optimization |
-| [🏠 Profile Landing Page](https://github.com/akoroma4749-debug/akoroma4749-debug) | My main GitHub portfolio with project overviews and contact info |
+| [🏠 Profile Landing Page](https://github.com/akoroma4749-debug/abdulkoroma) | My main GitHub portfolio with project overviews and contact info |
 
 ---
 
