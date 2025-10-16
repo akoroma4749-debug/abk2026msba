@@ -38,6 +38,9 @@ Our case study simulates a historical **Lending Club** scenario to demonstrate h
 
 ## 📂 Folder Guide
 
+The repository is organized for clarity and reproducibility, with dedicated folders for data, code, models, outputs, and visualization assets.  
+Each directory supports a different stage of the drift detection pipeline — from data sourcing and modeling to final presentation materials.
+
 | Folder | Contents |
 |--------|-----------|
 | `code/` | Core modeling scripts, drift detection logic, and utility functions |
