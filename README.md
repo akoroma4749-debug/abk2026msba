@@ -40,11 +40,14 @@ Our case study simulates a historical **Lending Club** scenario to demonstrate h
 
 | Folder | Contents |
 |--------|-----------|
-| `data/` | Preprocessed datasets (synthetic) |
-| `notebooks/` | Core modeling notebooks and drift experiments |
-| `methodology/` | Write-ups of model logic, parameters, and comparison notes |
-| `team/` | Team roles and structure |
-| `presentation/` | An early draft of our capstone deck and supporting visuals |
+| `code/` | Core modeling scripts, drift detection logic, and utility functions |
+| `data/` | Includes data documentation such as `data_dictionary.md` and `source_links.md` |
+| `model/` | Model architectures, autoencoder configurations, and training outputs |
+| `outputs/` | Generated results, performance summaries, and drift metrics |
+| `team/` | Team roles, contributions, and collaboration details |
+| `visualization code/` | Visualization scripts and supporting files for exploratory and presentation visuals |
+| `images/` | Exported plots, charts, and final presentation visuals |
+| `placeholder/` | Reserved for future expansion or additional reference files |
 
 ---
 
