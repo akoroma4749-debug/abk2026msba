@@ -44,7 +44,7 @@ Our case study simulates a historical **Lending Club** scenario to demonstrate h
 | `notebooks/` | Core modeling notebooks and drift experiments |
 | `methodology/` | Write-ups of model logic, parameters, and comparison notes |
 | `team/` | Team roles and structure |
-| `presentation/` | Final capstone deck and supporting visuals |
+| `presentation/` | An early draft of our capstone deck and supporting visuals |
 
 ---
 
