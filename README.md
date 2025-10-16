@@ -58,7 +58,7 @@ The project demonstrates how **early drift detection** can:
 
 ## 📈 Academic Context
 
-This capstone project was completed as part of the **NYU Stern MS in Business Analytics** program — a globally collaborative curriculum focused on real-world AI applications, data strategy, and business value creation.
+This ongoing capstone project is in process as part of the **NYU Stern MS in Business Analytics** program — a globally collaborative curriculum focused on real-world AI applications, data strategy, and business value creation.
 
 ---
 
